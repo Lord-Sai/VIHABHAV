@@ -118,7 +118,7 @@ nav.scrolled{background:rgba(10,9,7,0.97);border-bottom-color:rgba(201,168,76,0.
 .ring-inner{position:absolute;inset:110px;border-radius:50%;border:2px solid rgba(201,168,76,0.3);animation:spin1 9s linear infinite;}
 .ring-center{position:absolute;inset:150px;border-radius:50%;background:radial-gradient(circle,rgba(201,168,76,0.15),rgba(201,168,76,0.03));display:flex;align-items:center;justify-content:center;}
 .ring-center-text{text-align:center;}
-.ring-v{font-family:'Playfair Display',serif;font-size:56px;font-weight:900;color:var(--gold);line-height:1;text-shadow:0 0 40px rgba(201,168,76,0.5);}
+.ring-v{width:100%;height:100%;border-radius:50%;overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .ring-vi-text{font-size:8px;letter-spacing:3px;color:var(--text-muted);text-transform:uppercase;margin-top:4px;display:block;}
 .orbit-dot{position:absolute;width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 10px rgba(201,168,76,0.8);}
 @keyframes spin1{from{transform:rotate(0);}to{transform:rotate(360deg);}}
@@ -554,8 +554,10 @@ function closeMobileMenu(){
       <div class="ring-inner"></div>
       <div class="ring-center">
         <div class="ring-center-text">
-          <div class="ring-v">V</div>
-          <span class="ring-vi-text">VAIBHAV</span>
+        <div class="ring-v">
+        <img src="Vaibhav Sir Photo.png" style="width:100%;height:100%;object-fit:cover;border-radius:50%;display:block;">
+        </div>
+        <span class="ring-vi-text">VAIBHAV</span>
         </div>
       </div>
       <div style="position:absolute;inset:0;animation:spin1 20s linear infinite;pointer-events:none;">
@@ -729,7 +731,7 @@ function closeMobileMenu(){
 <!-- Floating Badge -->
 <a class="profile-badge" href="tel:+919920254354">
   <div class="profile-pulse"></div>
-  <div class="profile-avatar">VI</div>
+  <div class="profile-avatar">VA</div>
   <div class="profile-info">
     <span class="profile-name">Vaibhav Investment</span>
     <span class="profile-action">Talk to an advisor →</span>
