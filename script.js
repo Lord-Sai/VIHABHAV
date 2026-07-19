@@ -139,7 +139,7 @@ document.addEventListener('DOMContentLoaded', () => {
   waButtons.forEach(waBtn => {
     waBtn.addEventListener('click', (e) => {
       e.preventDefault();
-      const phone = '911234567890'; // Replace with real WhatsApp number, digits only, country code first
+      const phone = '9920254354'; // Replace with real WhatsApp number, digits only, country code first
       const message = encodeURIComponent('Hi Vaibhav! I found the Lord Sai Investment & Share Market Academy website and would like to know more.');
       window.open(`https://wa.me/${phone}?text=${message}`, '_blank', 'noopener');
     });
