@@ -6,6 +6,64 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
+  /* ==========================================================================
+     LANGUAGE SWITCHER (English / Hindi / Marathi)
+     ========================================================================== */
+  const LANG_KEY = 'lsi_lang';
+  const i18nEls = Array.from(document.querySelectorAll('[data-i18n]'));
+  const placeholderEls = Array.from(document.querySelectorAll('[data-i18n-placeholder]'));
+
+  // Capture the page's original English content once, so switching back to
+  // English always restores exactly what's authored in index.html.
+  const englishDefaults = {
+    i18n: new Map(i18nEls.map(el => [el, el.innerHTML])),
+    placeholders: new Map(placeholderEls.map(el => [el, el.getAttribute('placeholder') || '']))
+  };
+
+  function getLangData(lang) {
+    return (window.SITE_I18N && window.SITE_I18N[lang]) ? window.SITE_I18N[lang] : null;
+  }
+
+  function applyLanguage(lang) {
+    const data = getLangData(lang);
+
+    i18nEls.forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      const translated = data && data.i18n[key];
+      el.innerHTML = translated || englishDefaults.i18n.get(el);
+    });
+
+    placeholderEls.forEach(el => {
+      const key = el.getAttribute('data-i18n-placeholder');
+      const translated = data && data.placeholders[key];
+      el.setAttribute('placeholder', translated || englishDefaults.placeholders.get(el));
+    });
+
+    document.documentElement.setAttribute('lang', lang);
+    document.body.classList.toggle('lang-devanagari', lang === 'hi' || lang === 'mr');
+
+    document.querySelectorAll('.lang-btn').forEach(btn => {
+      const isActive = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('active', isActive);
+      btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+    });
+
+    renderTestimonials(lang);
+    renderFAQ(lang);
+
+    try { localStorage.setItem(LANG_KEY, lang); } catch (e) { /* storage unavailable */ }
+    currentLang = lang;
+  }
+
+  let currentLang = 'en';
+
+  document.querySelectorAll('.lang-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const lang = btn.getAttribute('data-lang');
+      if (lang !== currentLang) applyLanguage(lang);
+    });
+  });
+
   /* ---------- Sticky header shadow + scroll progress bar ---------- */
   const header = document.getElementById('siteHeader');
   const scrollProgress = document.getElementById('scrollProgress');
@@ -174,7 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   /* ---------- Testimonials: data-driven cards with avatar initials ---------- */
-  const testimonialData = [
+  const englishTestimonialData = [
     { name: 'Rohan Deshmukh', role: 'Salaried Employee, LSI Student', text: 'I never understood SIPs or mutual funds before. Vaibhav Sir\'s planning session finally made it simple and I started investing with a clear goal.' },
     { name: 'Sneha Kulkarni', role: 'College Student, LSI Student', text: 'The live market sessions cleared up so much confusion from random YouTube videos. I finally understand price action and risk management.' },
     { name: 'Amit Joshi', role: 'Business Owner', text: 'Vaibhav helped me diversify beyond my business — real financial planning, not just product selling. Transparent and practical advice.' },
@@ -182,8 +240,13 @@ document.addEventListener('DOMContentLoaded', () => {
     { name: 'Kiran Patil', role: 'NJ Wealth Client', text: 'Got proper term and health insurance guidance along with a goal-based investment plan. No pressure, just honest advice.' }
   ];
   const testimonialRow = document.getElementById('testimonialRow');
-  if (testimonialRow) {
-    testimonialData.forEach(t => {
+
+  function renderTestimonials(lang) {
+    if (!testimonialRow) return;
+    const data = getLangData(lang);
+    const list = (data && data.testimonials) ? data.testimonials : englishTestimonialData;
+    testimonialRow.innerHTML = '';
+    list.forEach(t => {
       const initials = t.name.split(' ').map(w => w[0]).join('');
       const card = document.createElement('div');
       card.className = 'testimonial-card fade-in';
@@ -213,7 +276,7 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   /* ---------- FAQ data + accordion build ---------- */
-  const faqData = [
+  const englishFaqData = [
     { q: 'Who can join the academy?', a: 'Anyone interested in learning about the stock market or financial planning — students, salaried professionals, business owners and homemakers are all welcome.' },
     { q: 'Do I need prior experience to join?', a: 'No. Courses start from the basics and build up to advanced strategies, so complete beginners are welcome.' },
     { q: 'What is the course duration?', a: 'Course duration varies by batch and level (basic, intermediate, advanced). Ask during your free counselling session for the current schedule.' },
@@ -229,22 +292,29 @@ document.addEventListener('DOMContentLoaded', () => {
   ];
 
   const accordion = document.getElementById('accordion');
-  faqData.forEach((item, i) => {
-    const el = document.createElement('div');
-    el.className = 'accordion-item fade-in';
-    el.innerHTML = `
-      <button class="accordion-question" aria-expanded="false">
-        <span>${item.q}</span>
-        <span class="accordion-icon" aria-hidden="true"></span>
-      </button>
-      <div class="accordion-answer">
-        <p>${item.a}</p>
-      </div>
-    `;
-    el.style.setProperty('--delay', `${Math.min(i * 70, 420)}ms`);
-    accordion.appendChild(el);
-    revealObserver.observe(el);
-  });
+
+  function renderFAQ(lang) {
+    if (!accordion) return;
+    const data = getLangData(lang);
+    const list = (data && data.faq) ? data.faq : englishFaqData;
+    accordion.innerHTML = '';
+    list.forEach((item, i) => {
+      const el = document.createElement('div');
+      el.className = 'accordion-item fade-in';
+      el.innerHTML = `
+        <button class="accordion-question" aria-expanded="false">
+          <span>${item.q}</span>
+          <span class="accordion-icon" aria-hidden="true"></span>
+        </button>
+        <div class="accordion-answer">
+          <p>${item.a}</p>
+        </div>
+      `;
+      el.style.setProperty('--delay', `${Math.min(i * 70, 420)}ms`);
+      accordion.appendChild(el);
+      revealObserver.observe(el);
+    });
+  }
 
   accordion.addEventListener('click', (e) => {
     const question = e.target.closest('.accordion-question');
@@ -287,12 +357,21 @@ document.addEventListener('DOMContentLoaded', () => {
   if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
       e.preventDefault();
-      formNote.textContent = 'Thanks! This form is a placeholder — connect it to your email service or backend to receive messages.';
+      const data = getLangData(currentLang);
+      formNote.textContent = (data && data.formNote) || 'Thanks! This form is a placeholder — connect it to your email service or backend to receive messages.';
       contactForm.reset();
     });
   }
 
   /* ---------- Footer year ---------- */
   document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---------- Initialize language (saved preference, else English) ---------- */
+  let savedLang = 'en';
+  try {
+    const stored = localStorage.getItem(LANG_KEY);
+    if (stored === 'en' || stored === 'hi' || stored === 'mr') savedLang = stored;
+  } catch (e) { /* storage unavailable */ }
+  applyLanguage(savedLang);
 
 });

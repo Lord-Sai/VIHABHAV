@@ -10,6 +10,8 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet">
+<!-- Noto Sans Devanagari for Hindi/Marathi rendering -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="style.css">
 </head>
@@ -28,14 +30,14 @@
     </a>
 
     <nav class="nav" id="mainNav">
-      <a href="#about">About</a>
-      <a href="#services">Services</a>
-      <a href="#academy">Academy</a>
-      <a href="#courses">Courses</a>
-      <a href="#why-us">Why Us</a>
-      <a href="#testimonials">Reviews</a>
-      <a href="#faq">FAQ</a>
-      <a href="#contact" class="nav-cta">Book Consultation</a>
+      <a href="#about" data-i18n="nav.about">About</a>
+      <a href="#services" data-i18n="nav.services">Services</a>
+      <a href="#academy" data-i18n="nav.academy">Academy</a>
+      <a href="#courses" data-i18n="nav.courses">Courses</a>
+      <a href="#why-us" data-i18n="nav.whyus">Why Us</a>
+      <a href="#testimonials" data-i18n="nav.reviews">Reviews</a>
+      <a href="#faq" data-i18n="nav.faq">FAQ</a>
+      <a href="#contact" class="nav-cta" data-i18n="nav.cta">Book Consultation</a>
     </nav>
 
     <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation" aria-expanded="false">
@@ -50,6 +52,19 @@
   <!-- HERO SECTION                  -->
   <!-- ============================= -->
   <section class="hero" id="heroSection">
+    <!-- ============================= -->
+    <!-- LANGUAGE SWITCHER              -->
+    <!-- ============================= -->
+    <div class="lang-switch-bar" id="langSwitchBar">
+      <div class="container lang-switch-inner">
+        <div class="lang-switch-group" role="group" aria-label="Select website language">
+          <button type="button" class="lang-btn active" data-lang="en" aria-pressed="true">English</button>
+          <button type="button" class="lang-btn" data-lang="hi" aria-pressed="false">हिंदी</button>
+          <button type="button" class="lang-btn" data-lang="mr" aria-pressed="false">मराठी</button>
+        </div>
+      </div>
+    </div>
+
     <div class="hero-spotlight" id="heroSpotlight" aria-hidden="true"></div>
     <div class="hero-orbit" id="heroOrbit" aria-hidden="true">
       <span class="hero-blob blob-1"></span>
@@ -64,32 +79,32 @@
     <div class="container hero-inner">
       <div class="hero-badge fade-in">
         <span class="pulse-dot" aria-hidden="true"></span>
-        NJ Wealth Distribution Partner
+        <span data-i18n="hero.badge">NJ Wealth Distribution Partner</span>
       </div>
       <h1 class="hero-title fade-in">
         <span class="profile-image"><img src="vaibhav-photo.png" alt="Vaibhav Pawar"></span>
-        <span class="gradient-text">Vaibhav Pawar</span>
+        <span class="gradient-text" data-i18n="hero.name">Vaibhav Pawar</span>
       </h1>
-      <p class="hero-tagline fade-in">Founder, Lord Sai Investment &amp; Share Market Academy<br>
+      <p class="hero-tagline fade-in" data-i18n="hero.tagline1">Founder, Lord Sai Investment &amp; Share Market Academy<br>
       Financial Educator &amp; Investor</p>
-      <p class="hero-tagline fade-in" style="font-size:1rem; margin-top:6px;">Helping individuals build wealth through financial planning, smart investing &amp; practical stock market education.</p>
+      <p class="hero-tagline fade-in" style="font-size:1rem; margin-top:6px;" data-i18n="hero.tagline2">Helping individuals build wealth through financial planning, smart investing &amp; practical stock market education.</p>
 
       <div class="hero-actions fade-in">
         <a href="tel:+919920254354" class="btn btn-primary ripple">
           <svg viewBox="0 0 24 24" class="btn-icon" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8c1.4 2.8 3.8 5.2 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V21c0 .6-.4 1-1 1C10.6 22 2 13.4 2 3c0-.6.4-1 1-1h3.2c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.3 1.1L6.6 10.8Z"/></svg>
-          <span>Call Now</span>
+          <span data-i18n="hero.callNow">Call Now</span>
         </a>
         <a href="https://wa.me/9920254354" class="btn btn-secondary ripple" data-whatsapp>
           <svg viewBox="0 0 24 24" class="btn-icon" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5.05-1.36A10 10 0 1 0 12 2Zm5.6 14.3c-.24.66-1.4 1.27-1.93 1.32-.5.05-1.02.24-3.4-.72-2.87-1.17-4.7-4.05-4.85-4.24-.14-.19-1.16-1.54-1.16-2.94 0-1.4.73-2.08 1-2.36.26-.28.57-.35.76-.35h.55c.18 0 .43-.03.66.5.24.57.8 1.98.87 2.12.07.15.12.32.02.5-.1.2-.15.32-.3.5-.15.17-.3.38-.44.51-.15.14-.3.3-.13.6.17.3.75 1.24 1.62 2.01 1.12.99 2.05 1.3 2.35 1.45.3.14.47.12.65-.08.17-.2.74-.86.94-1.16.2-.3.4-.24.66-.15.27.1 1.7.8 2 .95.28.14.47.21.54.33.07.13.07.72-.16 1.38Z"/></svg>
-          <span>WhatsApp</span>
+          <span data-i18n="hero.whatsapp">WhatsApp</span>
         </a>
         <a href="https://maps.app.goo.gl/hpDtsfawEw3kHmXWA" class="btn btn-ghost ripple">
           <svg viewBox="0 0 24 24" class="btn-icon" aria-hidden="true"><path fill="currentColor" d="M12 2C7.6 2 4 5.6 4 10c0 6 8 12 8 12s8-6 8-12c0-4.4-3.6-8-8-8Zm0 11a3 3 0 1 1 0-6 3 3 0 0 1 0 6Z"/></svg>
-          <span>Visit Academy</span>
+          <span data-i18n="hero.visitAcademy">Visit Academy</span>
         </a>
         <button class="btn btn-ghost ripple" id="vcardBtn" type="button">
           <svg viewBox="0 0 24 24" class="btn-icon" aria-hidden="true"><path fill="currentColor" d="M6 3a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V5a2 2 0 0 0-2-2H6Zm4 4a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5Zm0 6.5c2.33 0 4.5 1.17 4.5 2.5v1H5.5v-1c0-1.33 2.17-2.5 4.5-2.5Z"/></svg>
-          <span>Save Contact</span>
+          <span data-i18n="hero.saveContact">Save Contact</span>
         </button>
       </div>
     </div>
@@ -101,17 +116,17 @@
   <section class="section" id="about">
     <div class="container two-col">
       <div class="panel panel-dark fade-in">
-        <span class="eyebrow eyebrow-light">01 — About</span>
-        <h2>About Me</h2>
-        <p>I'm Vaibhav Pawar, Founder of Lord Sai Investment &amp; Share Market Academy and an NJ Wealth Distribution Partner. My work sits at the intersection of financial planning and practical stock market education — helping working professionals, students and business owners understand money instead of fearing it.</p>
-        <p><strong>My Mission:</strong> To make financial planning and stock market knowledge accessible, practical and honest — free of hype, shortcuts and unrealistic promises.</p>
-        <p><strong>Investment Philosophy:</strong> Long-term, goal-based investing built on discipline and financial literacy — not tips, guesswork or gambling.</p>
-        <p><strong>Why I Started LSI:</strong> I saw too many people learning the market from confusing YouTube videos and unreliable tips channels. Lord Sai Investment &amp; Share Market Academy exists to replace that confusion with structured, mentor-led, practical learning.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="about.eyebrow1">01 — About</span>
+        <h2 data-i18n="about.h2">About Me</h2>
+        <p data-i18n="about.p1">I'm Vaibhav Pawar, Founder of Lord Sai Investment &amp; Share Market Academy and an NJ Wealth Distribution Partner. My work sits at the intersection of financial planning and practical stock market education — helping working professionals, students and business owners understand money instead of fearing it.</p>
+        <p data-i18n="about.p2"><strong>My Mission:</strong> To make financial planning and stock market knowledge accessible, practical and honest — free of hype, shortcuts and unrealistic promises.</p>
+        <p data-i18n="about.p3"><strong>Investment Philosophy:</strong> Long-term, goal-based investing built on discipline and financial literacy — not tips, guesswork or gambling.</p>
+        <p data-i18n="about.p4"><strong>Why I Started LSI:</strong> I saw too many people learning the market from confusing YouTube videos and unreliable tips channels. Lord Sai Investment &amp; Share Market Academy exists to replace that confusion with structured, mentor-led, practical learning.</p>
       </div>
       <div class="panel panel-accent fade-in" data-tilt>
-        <span class="eyebrow eyebrow-light">02 — Snapshot</span>
-        <h3>What I Do</h3>
-        <p class="muted-light">Financial planning, mutual funds &amp; insurance advisory as an NJ Wealth Distribution Partner, alongside hands-on stock market education at Lord Sai Investment &amp; Share Market Academy.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="about.eyebrow2">02 — Snapshot</span>
+        <h3 data-i18n="about.h3">What I Do</h3>
+        <p class="muted-light" data-i18n="about.snapshot">Financial planning, mutual funds &amp; insurance advisory as an NJ Wealth Distribution Partner, alongside hands-on stock market education at Lord Sai Investment &amp; Share Market Academy.</p>
         <div class="graphic-placeholder" aria-hidden="true">
           <svg viewBox="0 0 200 160" width="100%" height="100%"><rect x="10" y="20" width="180" height="120" rx="14" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/><circle cx="70" cy="80" r="24" fill="none" stroke="currentColor" stroke-width="2"/><path d="M40 130 L80 90 L110 110 L170 50" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         </div>
@@ -124,45 +139,45 @@
   <!-- ============================= -->
   <section class="section alt-bg">
     <div class="container">
-      <span class="eyebrow fade-in">03 — My Journey</span>
-      <h2 class="fade-in">From Learning Markets to Building an Academy</h2>
-      <p class="section-lead fade-in">Every step of this journey shaped how I teach and advise today.</p>
+      <span class="eyebrow fade-in" data-i18n="journey.eyebrow">03 — My Journey</span>
+      <h2 class="fade-in" data-i18n="journey.h2">From Learning Markets to Building an Academy</h2>
+      <p class="section-lead fade-in" data-i18n="journey.lead">Every step of this journey shaped how I teach and advise today.</p>
 
       <div class="timeline fade-in">
         <div class="timeline-item">
-          <span class="timeline-year">Step 01</span>
-          <h4>Education</h4>
-          <p>Built a strong academic foundation before turning attention to personal finance and the stock market.</p>
+          <span class="timeline-year" data-i18n="journey.s1.label">Step 01</span>
+          <h4 data-i18n="journey.s1.title">Education</h4>
+          <p data-i18n="journey.s1.desc">Built a strong academic foundation before turning attention to personal finance and the stock market.</p>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">Step 02</span>
-          <h4>Started Learning Markets</h4>
-          <p>Began studying financial planning, mutual funds and the stock market in depth — driven by curiosity and the desire for financial independence.</p>
+          <span class="timeline-year" data-i18n="journey.s2.label">Step 02</span>
+          <h4 data-i18n="journey.s2.title">Started Learning Markets</h4>
+          <p data-i18n="journey.s2.desc">Began studying financial planning, mutual funds and the stock market in depth — driven by curiosity and the desire for financial independence.</p>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">Step 03</span>
-          <h4>Became an Investor</h4>
-          <p>Moved from theory to practice, applying disciplined, goal-based investing principles to real portfolios.</p>
+          <span class="timeline-year" data-i18n="journey.s3.label">Step 03</span>
+          <h4 data-i18n="journey.s3.title">Became an Investor</h4>
+          <p data-i18n="journey.s3.desc">Moved from theory to practice, applying disciplined, goal-based investing principles to real portfolios.</p>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">Step 04</span>
-          <h4>NJ Wealth Distribution Partner</h4>
-          <p>Partnered with NJ Wealth to offer structured financial planning, mutual funds and insurance solutions to families and individuals.</p>
+          <span class="timeline-year" data-i18n="journey.s4.label">Step 04</span>
+          <h4 data-i18n="journey.s4.title">NJ Wealth Distribution Partner</h4>
+          <p data-i18n="journey.s4.desc">Partnered with NJ Wealth to offer structured financial planning, mutual funds and insurance solutions to families and individuals.</p>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">Step 05</span>
-          <h4>Founded Lord Sai Investment &amp; Share Market Academy</h4>
-          <p>Launched LSI to teach practical, honest, mentor-led stock market education — the kind I wished existed when I started.</p>
+          <span class="timeline-year" data-i18n="journey.s5.label">Step 05</span>
+          <h4 data-i18n="journey.s5.title">Founded Lord Sai Investment &amp; Share Market Academy</h4>
+          <p data-i18n="journey.s5.desc">Launched LSI to teach practical, honest, mentor-led stock market education — the kind I wished existed when I started.</p>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">Step 06</span>
-          <h4>Teaching Hundreds of Students</h4>
-          <p>Grew LSI into a community of students learning technical analysis, trading psychology and long-term investing together.</p>
+          <span class="timeline-year" data-i18n="journey.s6.label">Step 06</span>
+          <h4 data-i18n="journey.s6.title">Teaching Hundreds of Students</h4>
+          <p data-i18n="journey.s6.desc">Grew LSI into a community of students learning technical analysis, trading psychology and long-term investing together.</p>
         </div>
         <div class="timeline-item">
-          <span class="timeline-year">Today</span>
-          <h4>Current Mission</h4>
-          <p>Continuing to guide individuals and families toward disciplined wealth creation and confident, independent market participation.</p>
+          <span class="timeline-year" data-i18n="journey.s7.label">Today</span>
+          <h4 data-i18n="journey.s7.title">Current Mission</h4>
+          <p data-i18n="journey.s7.desc">Continuing to guide individuals and families toward disciplined wealth creation and confident, independent market participation.</p>
         </div>
       </div>
     </div>
@@ -173,21 +188,21 @@
   <!-- ============================= -->
   <section class="section" id="expertise">
     <div class="container">
-      <span class="eyebrow fade-in">04 — Core Expertise</span>
-      <h2 class="fade-in">My Core Expertise</h2>
-      <p class="section-lead fade-in">A blend of financial advisory and hands-on market education.</p>
+      <span class="eyebrow fade-in" data-i18n="expertise.eyebrow">04 — Core Expertise</span>
+      <h2 class="fade-in" data-i18n="expertise.h2">My Core Expertise</h2>
+      <p class="section-lead fade-in" data-i18n="expertise.lead">A blend of financial advisory and hands-on market education.</p>
 
       <div class="tag-grid fade-in">
-        <span class="chip">Financial Planning</span>
-        <span class="chip">Mutual Funds</span>
-        <span class="chip">Insurance</span>
-        <span class="chip">SIP</span>
-        <span class="chip">Retirement Planning</span>
-        <span class="chip">Portfolio Review</span>
-        <span class="chip">Stock Market Education</span>
-        <span class="chip">Trading Psychology</span>
-        <span class="chip">Risk Management</span>
-        <span class="chip">Investment Consultation</span>
+        <span class="chip" data-i18n="expertise.chip1">Financial Planning</span>
+        <span class="chip" data-i18n="expertise.chip2">Mutual Funds</span>
+        <span class="chip" data-i18n="expertise.chip3">Insurance</span>
+        <span class="chip" data-i18n="expertise.chip4">SIP</span>
+        <span class="chip" data-i18n="expertise.chip5">Retirement Planning</span>
+        <span class="chip" data-i18n="expertise.chip6">Portfolio Review</span>
+        <span class="chip" data-i18n="expertise.chip7">Stock Market Education</span>
+        <span class="chip" data-i18n="expertise.chip8">Trading Psychology</span>
+        <span class="chip" data-i18n="expertise.chip9">Risk Management</span>
+        <span class="chip" data-i18n="expertise.chip10">Investment Consultation</span>
       </div>
     </div>
   </section>
@@ -198,7 +213,7 @@
   <section class="section promise-section alt-bg">
     <div class="container">
       <div class="promise-banner fade-in">
-        <p>"Practical, honest financial guidance — no false promises, no shortcuts, just disciplined planning and real education."</p>
+        <p data-i18n="promise.text">"Practical, honest financial guidance — no false promises, no shortcuts, just disciplined planning and real education."</p>
       </div>
     </div>
   </section>
@@ -209,52 +224,52 @@
   <section class="section" id="services">
     <div class="container">
       <div class="panel panel-dark wide fade-in">
-        <span class="eyebrow eyebrow-light">05 — Services</span>
-        <h2>Professional Services</h2>
-        <p class="muted-light">As an NJ Wealth Distribution Partner, I help individuals and families plan their finances around real goals — from your first SIP to retirement — with transparent, no-pressure advice.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="services.eyebrow">05 — Services</span>
+        <h2 data-i18n="services.h2">Professional Services</h2>
+        <p class="muted-light" data-i18n="services.lead">As an NJ Wealth Distribution Partner, I help individuals and families plan their finances around real goals — from your first SIP to retirement — with transparent, no-pressure advice.</p>
       </div>
 
       <div class="service-grid">
         <div class="card fade-in" data-tilt>
-          <h3>Investment Planning</h3>
+          <h3 data-i18n="services.card1.title">Investment Planning</h3>
           <ul class="check-list">
-            <li>Mutual Funds</li>
-            <li>SIP &amp; Wealth Creation</li>
-            <li>Portfolio Review</li>
+            <li data-i18n="services.card1.li1">Mutual Funds</li>
+            <li data-i18n="services.card1.li2">SIP &amp; Wealth Creation</li>
+            <li data-i18n="services.card1.li3">Portfolio Review</li>
           </ul>
         </div>
         <div class="card fade-in" data-tilt>
-          <h3>Insurance</h3>
+          <h3 data-i18n="services.card2.title">Insurance</h3>
           <ul class="check-list">
-            <li>Health Insurance</li>
-            <li>Term Insurance</li>
-            <li>Family Protection Planning</li>
+            <li data-i18n="services.card2.li1">Health Insurance</li>
+            <li data-i18n="services.card2.li2">Term Insurance</li>
+            <li data-i18n="services.card2.li3">Family Protection Planning</li>
           </ul>
         </div>
         <div class="card fade-in" data-tilt>
-          <h3>Goal Planning</h3>
+          <h3 data-i18n="services.card3.title">Goal Planning</h3>
           <ul class="check-list">
-            <li>Child Education Planning</li>
-            <li>Tax Saving Strategies</li>
-            <li>Emergency Fund Planning</li>
+            <li data-i18n="services.card3.li1">Child Education Planning</li>
+            <li data-i18n="services.card3.li2">Tax Saving Strategies</li>
+            <li data-i18n="services.card3.li3">Emergency Fund Planning</li>
           </ul>
         </div>
       </div>
 
-      <h3 class="section-subheading fade-in">Also Included</h3>
+      <h3 class="section-subheading fade-in" data-i18n="services.included">Also Included</h3>
       <div class="chip-row fade-in">
-        <span class="chip">Wealth Creation</span>
-        <span class="chip">Retirement Planning</span>
-        <span class="chip">Portfolio Review</span>
-        <span class="chip">Financial Consultation</span>
+        <span class="chip" data-i18n="services.chip1">Wealth Creation</span>
+        <span class="chip" data-i18n="services.chip2">Retirement Planning</span>
+        <span class="chip" data-i18n="services.chip3">Portfolio Review</span>
+        <span class="chip" data-i18n="services.chip4">Financial Consultation</span>
       </div>
 
       <div class="cta-banner fade-in">
-        <h3>Ready to plan your finances the right way?</h3>
-        <p>Book a free, no-obligation consultation to review your goals and current investments.</p>
+        <h3 data-i18n="services.cta.h3">Ready to plan your finances the right way?</h3>
+        <p data-i18n="services.cta.p">Book a free, no-obligation consultation to review your goals and current investments.</p>
         <div class="hero-actions">
           <a href="#contact" class="btn btn-primary ripple">
-            <span>Book Financial Consultation</span>
+            <span data-i18n="services.cta.btn">Book Financial Consultation</span>
           </a>
         </div>
       </div>
@@ -267,19 +282,19 @@
   <section class="section alt-bg" id="why-us">
     <div class="container">
       <div class="panel panel-dark fade-in">
-        <span class="eyebrow eyebrow-light">06 — Why Work With Me</span>
-        <h2>Why Work With Me</h2>
-        <p class="muted-light">Financial advice built on transparency and your long-term interest — not on selling products.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="whyus.eyebrow">06 — Why Work With Me</span>
+        <h2 data-i18n="whyus.h2">Why Work With Me</h2>
+        <p class="muted-light" data-i18n="whyus.lead">Financial advice built on transparency and your long-term interest — not on selling products.</p>
       </div>
       <div class="tag-grid fade-in" style="margin-top:28px;">
-        <span class="chip">Personal Guidance</span>
-        <span class="chip">Long-Term Thinking</span>
-        <span class="chip">Transparent Advice</span>
-        <span class="chip">No False Promises</span>
-        <span class="chip">Education First</span>
-        <span class="chip">Goal-Based Planning</span>
-        <span class="chip">Practical Solutions</span>
-        <span class="chip">Continuous Support</span>
+        <span class="chip" data-i18n="whyus.chip1">Personal Guidance</span>
+        <span class="chip" data-i18n="whyus.chip2">Long-Term Thinking</span>
+        <span class="chip" data-i18n="whyus.chip3">Transparent Advice</span>
+        <span class="chip" data-i18n="whyus.chip4">No False Promises</span>
+        <span class="chip" data-i18n="whyus.chip5">Education First</span>
+        <span class="chip" data-i18n="whyus.chip6">Goal-Based Planning</span>
+        <span class="chip" data-i18n="whyus.chip7">Practical Solutions</span>
+        <span class="chip" data-i18n="whyus.chip8">Continuous Support</span>
       </div>
     </div>
   </section>
@@ -289,30 +304,30 @@
   <!-- ============================= -->
   <section class="section" id="case-studies">
     <div class="container">
-      <span class="eyebrow fade-in">07 — Success Stories</span>
-      <h2 class="fade-in">Success Stories</h2>
-      <p class="section-lead fade-in">A few examples of how planning and education have helped real people (names withheld for privacy).</p>
+      <span class="eyebrow fade-in" data-i18n="case.eyebrow">07 — Success Stories</span>
+      <h2 class="fade-in" data-i18n="case.h2">Success Stories</h2>
+      <p class="section-lead fade-in" data-i18n="case.lead">A few examples of how planning and education have helped real people (names withheld for privacy).</p>
 
       <div class="case-list">
         <div class="case-item fade-in">
           <span class="case-index">01</span>
           <div class="case-body">
-            <h3>Young Salaried Employee</h3>
-            <p><strong>Goal:</strong> Start investing. <strong>Problem:</strong> Didn't know where to start. <strong>Solution:</strong> Financial planning + SIP. <strong>Outcome:</strong> Started disciplined, goal-based investing.</p>
+            <h3 data-i18n="case.item1.title">Young Salaried Employee</h3>
+            <p data-i18n="case.item1.text"><strong>Goal:</strong> Start investing. <strong>Problem:</strong> Didn't know where to start. <strong>Solution:</strong> Financial planning + SIP. <strong>Outcome:</strong> Started disciplined, goal-based investing.</p>
           </div>
         </div>
         <div class="case-item fade-in">
           <span class="case-index">02</span>
           <div class="case-body">
-            <h3>College Student</h3>
-            <p><strong>Goal:</strong> Learn trading. <strong>Problem:</strong> Confused by conflicting YouTube advice. <strong>Solution:</strong> Joined LSI Academy. <strong>Outcome:</strong> Understood market fundamentals with a structured curriculum.</p>
+            <h3 data-i18n="case.item2.title">College Student</h3>
+            <p data-i18n="case.item2.text"><strong>Goal:</strong> Learn trading. <strong>Problem:</strong> Confused by conflicting YouTube advice. <strong>Solution:</strong> Joined LSI Academy. <strong>Outcome:</strong> Understood market fundamentals with a structured curriculum.</p>
           </div>
         </div>
         <div class="case-item fade-in">
           <span class="case-index">03</span>
           <div class="case-body">
-            <h3>Business Owner</h3>
-            <p><strong>Goal:</strong> Diversify investments. <strong>Solution:</strong> Comprehensive financial planning. <strong>Outcome:</strong> Created a long-term investment strategy aligned with business cash flow.</p>
+            <h3 data-i18n="case.item3.title">Business Owner</h3>
+            <p data-i18n="case.item3.text"><strong>Goal:</strong> Diversify investments. <strong>Solution:</strong> Comprehensive financial planning. <strong>Outcome:</strong> Created a long-term investment strategy aligned with business cash flow.</p>
           </div>
         </div>
       </div>
@@ -324,35 +339,35 @@
   <!-- ============================= -->
   <section class="section alt-bg">
     <div class="container">
-      <span class="eyebrow fade-in">08 — By The Numbers</span>
-      <h2 class="fade-in">Numbers That Build Trust</h2>
+      <span class="eyebrow fade-in" data-i18n="stats.eyebrow">08 — By The Numbers</span>
+      <h2 class="fade-in" data-i18n="stats.h2">Numbers That Build Trust</h2>
       <div class="stats-grid">
         <div class="stat-card fade-in scale-in" data-tilt>
           <span class="stat-number">500+</span>
-          <span class="stat-label">Students Trained</span>
+          <span class="stat-label" data-i18n="stats.label1">Students Trained</span>
         </div>
         <div class="stat-card fade-in scale-in" data-tilt>
           <span class="stat-number">100+</span>
-          <span class="stat-label">Live Sessions Conducted</span>
+          <span class="stat-label" data-i18n="stats.label2">Live Sessions Conducted</span>
         </div>
         <div class="stat-card fade-in scale-in" data-tilt>
           <span class="stat-number">5+</span>
-          <span class="stat-label">Years of Learning</span>
+          <span class="stat-label" data-i18n="stats.label3">Years of Learning</span>
         </div>
         <div class="stat-card fade-in scale-in" data-tilt>
           <span class="stat-number">30+</span>
-          <span class="stat-label">Workshops Conducted</span>
+          <span class="stat-label" data-i18n="stats.label4">Workshops Conducted</span>
         </div>
         <div class="stat-card fade-in scale-in" data-tilt>
           <span class="stat-number">300+</span>
-          <span class="stat-label">Happy Families Guided</span>
+          <span class="stat-label" data-i18n="stats.label5">Happy Families Guided</span>
         </div>
         <div class="stat-card fade-in scale-in" data-tilt>
           <span class="stat-number">1000+</span>
-          <span class="stat-label">Community Members</span>
+          <span class="stat-label" data-i18n="stats.label6">Community Members</span>
         </div>
       </div>
-      <p style="text-align:center; margin-top:16px; font-size:0.8rem;">Figures are indicative — update with your verified numbers.</p>
+      <p style="text-align:center; margin-top:16px; font-size:0.8rem;" data-i18n="stats.note">Figures are indicative — update with your verified numbers.</p>
     </div>
   </section>
 
@@ -362,17 +377,17 @@
   <section class="section" id="academy">
     <div class="container two-col">
       <div class="panel panel-dark fade-in">
-        <span class="eyebrow eyebrow-light">09 — About the Academy</span>
-        <h2>About Lord Sai Investment &amp; Share Market Academy</h2>
-        <p><strong>Mission:</strong> Deliver practical, mentor-led stock market and financial education that people can actually apply.</p>
-        <p><strong>Vision:</strong> Build a community of financially literate, independent investors and traders across every walk of life.</p>
-        <p><strong>Learning Philosophy:</strong> Learn by doing — live market sessions, small batches and continuous doubt-solving over passive lectures.</p>
-        <p><strong>Who We Help:</strong> Students, salaried professionals and business owners — from complete beginners to those ready for advanced strategies.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="academy.eyebrow">09 — About the Academy</span>
+        <h2 data-i18n="academy.h2">About Lord Sai Investment &amp; Share Market Academy</h2>
+        <p data-i18n="academy.p1"><strong>Mission:</strong> Deliver practical, mentor-led stock market and financial education that people can actually apply.</p>
+        <p data-i18n="academy.p2"><strong>Vision:</strong> Build a community of financially literate, independent investors and traders across every walk of life.</p>
+        <p data-i18n="academy.p3"><strong>Learning Philosophy:</strong> Learn by doing — live market sessions, small batches and continuous doubt-solving over passive lectures.</p>
+        <p data-i18n="academy.p4"><strong>Who We Help:</strong> Students, salaried professionals and business owners — from complete beginners to those ready for advanced strategies.</p>
       </div>
       <div class="panel panel-accent fade-in" data-tilt>
-        <span class="eyebrow eyebrow-light">Why LSI Exists</span>
-        <h3>Structured Learning Over Guesswork</h3>
-        <p class="muted-light">LSI exists because scattered, unreliable market "tips" don't build lasting skill. We replace that with a structured curriculum, live practice and lifetime mentorship.</p>
+        <span class="eyebrow eyebrow-light" data-i18n="academy.eyebrow2">Why LSI Exists</span>
+        <h3 data-i18n="academy.h3">Structured Learning Over Guesswork</h3>
+        <p class="muted-light" data-i18n="academy.text">LSI exists because scattered, unreliable market "tips" don't build lasting skill. We replace that with a structured curriculum, live practice and lifetime mentorship.</p>
         <div class="graphic-placeholder small" aria-hidden="true">
           <svg viewBox="0 0 120 120" width="100%" height="100%"><rect x="15" y="15" width="90" height="90" rx="12" fill="none" stroke="currentColor" stroke-width="2" opacity="0.5"/><circle cx="60" cy="60" r="28" fill="none" stroke="currentColor" stroke-width="2"/></svg>
         </div>
@@ -385,17 +400,17 @@
   <!-- ============================= -->
   <section class="section alt-bg">
     <div class="container">
-      <span class="eyebrow fade-in">10 — Why Choose LSI</span>
-      <h2 class="fade-in">Why Choose LSI</h2>
+      <span class="eyebrow fade-in" data-i18n="whychoose.eyebrow">10 — Why Choose LSI</span>
+      <h2 class="fade-in" data-i18n="whychoose.h2">Why Choose LSI</h2>
       <div class="tag-grid fade-in">
-        <span class="chip">Live Market Learning</span>
-        <span class="chip">Small Batch Sizes</span>
-        <span class="chip">Practical Sessions</span>
-        <span class="chip">Personal Mentorship</span>
-        <span class="chip">Affordable Fees</span>
-        <span class="chip">Community Support</span>
-        <span class="chip">Structured Curriculum</span>
-        <span class="chip">Lifetime Learning</span>
+        <span class="chip" data-i18n="whychoose.chip1">Live Market Learning</span>
+        <span class="chip" data-i18n="whychoose.chip2">Small Batch Sizes</span>
+        <span class="chip" data-i18n="whychoose.chip3">Practical Sessions</span>
+        <span class="chip" data-i18n="whychoose.chip4">Personal Mentorship</span>
+        <span class="chip" data-i18n="whychoose.chip5">Affordable Fees</span>
+        <span class="chip" data-i18n="whychoose.chip6">Community Support</span>
+        <span class="chip" data-i18n="whychoose.chip7">Structured Curriculum</span>
+        <span class="chip" data-i18n="whychoose.chip8">Lifetime Learning</span>
       </div>
     </div>
   </section>
@@ -405,46 +420,46 @@
   <!-- ============================= -->
   <section class="section" id="courses">
     <div class="container">
-      <span class="eyebrow fade-in">11 — Curriculum</span>
-      <h2 class="fade-in">Complete Course Curriculum</h2>
-      <p class="section-lead fade-in">A structured path from the basics to advanced, practical trading and investing.</p>
+      <span class="eyebrow fade-in" data-i18n="curriculum.eyebrow">11 — Curriculum</span>
+      <h2 class="fade-in" data-i18n="curriculum.h2">Complete Course Curriculum</h2>
+      <p class="section-lead fade-in" data-i18n="curriculum.lead">A structured path from the basics to advanced, practical trading and investing.</p>
 
       <div class="curriculum-cols">
         <div class="curriculum-col fade-in" data-tilt>
-          <h4>Basic</h4>
+          <h4 data-i18n="curriculum.basic.title">Basic</h4>
           <ul class="check-list">
-            <li>Market Fundamentals</li>
-            <li>Technical Analysis Basics</li>
-            <li>Price Action</li>
-            <li>Risk Management Basics</li>
+            <li data-i18n="curriculum.basic.li1">Market Fundamentals</li>
+            <li data-i18n="curriculum.basic.li2">Technical Analysis Basics</li>
+            <li data-i18n="curriculum.basic.li3">Price Action</li>
+            <li data-i18n="curriculum.basic.li4">Risk Management Basics</li>
           </ul>
         </div>
         <div class="curriculum-col fade-in" data-tilt>
-          <h4>Intermediate</h4>
+          <h4 data-i18n="curriculum.intermediate.title">Intermediate</h4>
           <ul class="check-list">
-            <li>Swing Trading</li>
-            <li>Intraday Trading</li>
-            <li>Trading Psychology</li>
-            <li>Portfolio Building</li>
+            <li data-i18n="curriculum.intermediate.li1">Swing Trading</li>
+            <li data-i18n="curriculum.intermediate.li2">Intraday Trading</li>
+            <li data-i18n="curriculum.intermediate.li3">Trading Psychology</li>
+            <li data-i18n="curriculum.intermediate.li4">Portfolio Building</li>
           </ul>
         </div>
         <div class="curriculum-col fade-in" data-tilt>
-          <h4>Advanced</h4>
+          <h4 data-i18n="curriculum.advanced.title">Advanced</h4>
           <ul class="check-list">
-            <li>Options &amp; Futures</li>
-            <li>Options Greeks</li>
-            <li>Live Market Practice</li>
-            <li>Investment Planning</li>
+            <li data-i18n="curriculum.advanced.li1">Options &amp; Futures</li>
+            <li data-i18n="curriculum.advanced.li2">Options Greeks</li>
+            <li data-i18n="curriculum.advanced.li3">Live Market Practice</li>
+            <li data-i18n="curriculum.advanced.li4">Investment Planning</li>
           </ul>
         </div>
       </div>
 
-      <h3 class="section-subheading fade-in">Every Batch Also Includes</h3>
+      <h3 class="section-subheading fade-in" data-i18n="curriculum.included.title">Every Batch Also Includes</h3>
       <div class="chip-row fade-in">
-        <span class="chip">Doubt Solving</span>
-        <span class="chip">Certification</span>
-        <span class="chip">Live Market Sessions</span>
-        <span class="chip">Mentorship</span>
+        <span class="chip" data-i18n="curriculum.included.chip1">Doubt Solving</span>
+        <span class="chip" data-i18n="curriculum.included.chip2">Certification</span>
+        <span class="chip" data-i18n="curriculum.included.chip3">Live Market Sessions</span>
+        <span class="chip" data-i18n="curriculum.included.chip4">Mentorship</span>
       </div>
     </div>
   </section>
@@ -454,16 +469,16 @@
   <!-- ============================= -->
   <section class="section alt-bg">
     <div class="container">
-      <span class="eyebrow fade-in">12 — Learning Process</span>
-      <h2 class="fade-in">Your Learning Journey at LSI</h2>
+      <span class="eyebrow fade-in" data-i18n="process.eyebrow">12 — Learning Process</span>
+      <h2 class="fade-in" data-i18n="process.h2">Your Learning Journey at LSI</h2>
       <div class="process-row">
-        <div class="process-step fade-in"><span class="process-num">1</span><h4>Free Counselling</h4></div>
-        <div class="process-step fade-in"><span class="process-num">2</span><h4>Admission</h4></div>
-        <div class="process-step fade-in"><span class="process-num">3</span><h4>Basic Training</h4></div>
-        <div class="process-step fade-in"><span class="process-num">4</span><h4>Practical Sessions</h4></div>
-        <div class="process-step fade-in"><span class="process-num">5</span><h4>Live Market</h4></div>
-        <div class="process-step fade-in"><span class="process-num">6</span><h4>Mentorship</h4></div>
-        <div class="process-step fade-in"><span class="process-num">7</span><h4>Independent Learning</h4></div>
+        <div class="process-step fade-in"><span class="process-num">1</span><h4 data-i18n="process.step1">Free Counselling</h4></div>
+        <div class="process-step fade-in"><span class="process-num">2</span><h4 data-i18n="process.step2">Admission</h4></div>
+        <div class="process-step fade-in"><span class="process-num">3</span><h4 data-i18n="process.step3">Basic Training</h4></div>
+        <div class="process-step fade-in"><span class="process-num">4</span><h4 data-i18n="process.step4">Practical Sessions</h4></div>
+        <div class="process-step fade-in"><span class="process-num">5</span><h4 data-i18n="process.step5">Live Market</h4></div>
+        <div class="process-step fade-in"><span class="process-num">6</span><h4 data-i18n="process.step6">Mentorship</h4></div>
+        <div class="process-step fade-in"><span class="process-num">7</span><h4 data-i18n="process.step7">Independent Learning</h4></div>
       </div>
     </div>
   </section>
@@ -473,15 +488,15 @@
   <!-- ============================= -->
   <section class="section">
     <div class="container">
-      <span class="eyebrow fade-in">13 — Student Benefits</span>
-      <h2 class="fade-in">What Students Gain</h2>
+      <span class="eyebrow fade-in" data-i18n="benefits.eyebrow">13 — Student Benefits</span>
+      <h2 class="fade-in" data-i18n="benefits.h2">What Students Gain</h2>
       <div class="tag-grid fade-in">
-        <span class="chip">Practical Skills</span>
-        <span class="chip">Confidence</span>
-        <span class="chip">Live Market Exposure</span>
-        <span class="chip">Community</span>
-        <span class="chip">Lifetime Learning</span>
-        <span class="chip">Personal Support</span>
+        <span class="chip" data-i18n="benefits.chip1">Practical Skills</span>
+        <span class="chip" data-i18n="benefits.chip2">Confidence</span>
+        <span class="chip" data-i18n="benefits.chip3">Live Market Exposure</span>
+        <span class="chip" data-i18n="benefits.chip4">Community</span>
+        <span class="chip" data-i18n="benefits.chip5">Lifetime Learning</span>
+        <span class="chip" data-i18n="benefits.chip6">Personal Support</span>
       </div>
     </div>
   </section>
@@ -491,23 +506,23 @@
   <!-- ============================= -->
   <section class="section alt-bg" id="testimonials">
     <div class="container">
-      <span class="eyebrow fade-in">14 — Testimonials</span>
-      <h2 class="fade-in">Student Testimonials</h2>
-      <p class="section-lead fade-in">Feedback from students and families guided through LSI Academy.</p>
+      <span class="eyebrow fade-in" data-i18n="testimonials.eyebrow">14 — Testimonials</span>
+      <h2 class="fade-in" data-i18n="testimonials.h2">Student Testimonials</h2>
+      <p class="section-lead fade-in" data-i18n="testimonials.lead">Feedback from students and families guided through LSI Academy.</p>
 
       <div class="scroll-row" id="testimonialRow">
         <!-- Testimonial cards are generated by script.js from the testimonialData array -->
       </div>
 
-      <h3 class="section-subheading fade-in">Classroom Gallery</h3>
-      <p class="section-lead fade-in">A glimpse of our office, classes, live sessions and events.</p>
+      <h3 class="section-subheading fade-in" data-i18n="testimonials.gallery.h3">Classroom Gallery</h3>
+      <p class="section-lead fade-in" data-i18n="testimonials.gallery.lead">A glimpse of our office, classes, live sessions and events.</p>
       <div class="gallery-grid">
-        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption">Office</span></div>
-        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption">Students</span></div>
-        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption">Teaching</span></div>
-        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption">Live Charts</span></div>
-        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption">Certificates</span></div>
-        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption">Seminars &amp; Events</span></div>
+        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption" data-i18n="testimonials.gallery.c1">Office</span></div>
+        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption" data-i18n="testimonials.gallery.c2">Students</span></div>
+        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption" data-i18n="testimonials.gallery.c3">Teaching</span></div>
+        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption" data-i18n="testimonials.gallery.c4">Live Charts</span></div>
+        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption" data-i18n="testimonials.gallery.c5">Certificates</span></div>
+        <div class="gallery-item fade-in"><span class="gallery-placeholder"></span><span class="gallery-caption" data-i18n="testimonials.gallery.c6">Seminars &amp; Events</span></div>
       </div>
     </div>
   </section>
@@ -518,14 +533,14 @@
   <section class="section">
     <div class="container two-col">
       <div class="panel panel-outline fade-in">
-        <span class="eyebrow">15 — Certifications</span>
-        <h3>Certifications &amp; Recognition</h3>
-        <p>Students receive a certificate of completion on finishing the course. LSI is recognized within the local investor community for its practical, mentor-led approach.</p>
+        <span class="eyebrow" data-i18n="cert.eyebrow">15 — Certifications</span>
+        <h3 data-i18n="cert.h3">Certifications &amp; Recognition</h3>
+        <p data-i18n="cert.text">Students receive a certificate of completion on finishing the course. LSI is recognized within the local investor community for its practical, mentor-led approach.</p>
       </div>
       <div class="panel panel-outline fade-in">
-        <span class="eyebrow">16 — Events &amp; Workshops</span>
-        <h3>Events &amp; Workshops</h3>
-        <p>Regular Investor Awareness Programs, weekend workshops, guest sessions and community meetups keep learning ongoing beyond the classroom.</p>
+        <span class="eyebrow" data-i18n="events.eyebrow">16 — Events &amp; Workshops</span>
+        <h3 data-i18n="events.h3">Events &amp; Workshops</h3>
+        <p data-i18n="events.text">Regular Investor Awareness Programs, weekend workshops, guest sessions and community meetups keep learning ongoing beyond the classroom.</p>
       </div>
     </div>
   </section>
@@ -535,9 +550,9 @@
   <!-- ============================= -->
   <section class="section alt-bg" id="faq">
     <div class="container">
-      <span class="eyebrow fade-in">17 — FAQ</span>
-      <h2 class="fade-in">Frequently Asked Questions</h2>
-      <p class="section-lead fade-in">Answers to the questions we hear most from prospective students and clients.</p>
+      <span class="eyebrow fade-in" data-i18n="faq.eyebrow">17 — FAQ</span>
+      <h2 class="fade-in" data-i18n="faq.h2">Frequently Asked Questions</h2>
+      <p class="section-lead fade-in" data-i18n="faq.lead">Answers to the questions we hear most from prospective students and clients.</p>
 
       <div class="accordion" id="accordion">
         <!-- FAQ items generated by script.js -->
@@ -550,17 +565,17 @@
   <!-- ============================= -->
   <section class="section">
     <div class="container">
-      <span class="eyebrow fade-in">18 — Free Resources</span>
-      <h2 class="fade-in">Free Resources &amp; Latest Insights</h2>
-      <p class="section-lead fade-in">Beginner guides, checklists and market updates to help you get started before you enroll.</p>
+      <span class="eyebrow fade-in" data-i18n="resources.eyebrow">18 — Free Resources</span>
+      <h2 class="fade-in" data-i18n="resources.h2">Free Resources &amp; Latest Insights</h2>
+      <p class="section-lead fade-in" data-i18n="resources.lead">Beginner guides, checklists and market updates to help you get started before you enroll.</p>
       <div class="chip-row fade-in">
-        <span class="chip">Beginner Guide</span>
-        <span class="chip">Investment Checklist</span>
-        <span class="chip">Risk Management PDF</span>
-        <span class="chip">Market Glossary</span>
-        <span class="chip">Free Webinar</span>
-        <span class="chip">Blog</span>
-        <span class="chip">Weekly Market Updates</span>
+        <span class="chip" data-i18n="resources.chip1">Beginner Guide</span>
+        <span class="chip" data-i18n="resources.chip2">Investment Checklist</span>
+        <span class="chip" data-i18n="resources.chip3">Risk Management PDF</span>
+        <span class="chip" data-i18n="resources.chip4">Market Glossary</span>
+        <span class="chip" data-i18n="resources.chip5">Free Webinar</span>
+        <span class="chip" data-i18n="resources.chip6">Blog</span>
+        <span class="chip" data-i18n="resources.chip7">Weekly Market Updates</span>
       </div>
     </div>
   </section>
@@ -572,20 +587,20 @@
     <div class="container">
       <div class="contact-grid">
         <div class="fade-in">
-          <span class="eyebrow">Get in touch</span>
-          <h2>Contact &amp; Book a Consultation</h2>
-          <p>Have a question about financial planning, investing or the academy? Reach out — or book a free consultation below.</p>
+          <span class="eyebrow" data-i18n="contact.eyebrow">Get in touch</span>
+          <h2 data-i18n="contact.h2">Contact &amp; Book a Consultation</h2>
+          <p data-i18n="contact.p">Have a question about financial planning, investing or the academy? Reach out — or book a free consultation below.</p>
 
           <ul class="contact-details">
-            <li><strong>Founder:</strong> Vaibhav Pawar</li>
-            <li><strong>Business:</strong> Lord Sai Investment &amp; Share Market Academy</li>
-            <li><strong>Category:</strong> Financial Planning &amp; Stock Market Education</li>
-            <li><strong>Phone:</strong> +91 99202 54354</li>
-            <li><strong>WhatsApp:</strong> +91 99202 54354</li>
-            <li><strong>Email:</strong> lordsai.academy@gmail.com</li>
-            <li><strong>Address:</strong> KAMTHA ROAD, near GADE HOSPITAL, Shreeraj Nagar, APT, Uran, Maharashtra 400702</li>
-            <li><strong>Working Hours:</strong> Mon – Sat, 10:00 AM – 7:00 PM</li>
-            <li><strong>Languages:</strong> English, Hindi, Marathi</li>
+            <li data-i18n="contact.detail.founder"><strong>Founder:</strong> Vaibhav Pawar</li>
+            <li data-i18n="contact.detail.business"><strong>Business:</strong> Lord Sai Investment &amp; Share Market Academy</li>
+            <li data-i18n="contact.detail.category"><strong>Category:</strong> Financial Planning &amp; Stock Market Education</li>
+            <li data-i18n="contact.detail.phone"><strong>Phone:</strong> +91 99202 54354</li>
+            <li data-i18n="contact.detail.whatsapp"><strong>WhatsApp:</strong> +91 99202 54354</li>
+            <li data-i18n="contact.detail.email"><strong>Email:</strong> lordsai.academy@gmail.com</li>
+            <li data-i18n="contact.detail.address"><strong>Address:</strong> KAMTHA ROAD, near GADE HOSPITAL, Shreeraj Nagar, APT, Uran, Maharashtra 400702</li>
+            <li data-i18n="contact.detail.hours"><strong>Working Hours:</strong> Mon – Sat, 10:00 AM – 7:00 PM</li>
+            <li data-i18n="contact.detail.languages"><strong>Languages:</strong> English, Hindi, Marathi</li>
           </ul>
 
           <div class="social-row">
@@ -597,39 +612,39 @@
           </div>
 
           <div class="disclaimer-box fade-in" style="margin-top:32px;">
-            <p><strong>Disclaimer:</strong> Content shared by Lord Sai Investment &amp; Share Market Academy is for educational purposes only and does not constitute investment advice.</p>
-            <p>Investments in securities and mutual funds are subject to market risk. There are no guaranteed returns — please read all scheme-related documents carefully before investing.</p>
+            <p data-i18n="contact.disclaimer.p1"><strong>Disclaimer:</strong> Content shared by Lord Sai Investment &amp; Share Market Academy is for educational purposes only and does not constitute investment advice.</p>
+            <p data-i18n="contact.disclaimer.p2">Investments in securities and mutual funds are subject to market risk. There are no guaranteed returns — please read all scheme-related documents carefully before investing.</p>
           </div>
         </div>
 
         <form class="contact-form fade-in" id="contactForm">
           <label>
-            <span>Name</span>
-            <input type="text" name="name" placeholder="Your name" required>
+            <span data-i18n="form.name.label">Name</span>
+            <input type="text" name="name" placeholder="Your name" required data-i18n-placeholder="form.name.placeholder">
           </label>
           <label>
-            <span>Phone</span>
-            <input type="tel" name="phone" placeholder="Your phone number" required>
+            <span data-i18n="form.phone.label">Phone</span>
+            <input type="tel" name="phone" placeholder="Your phone number" required data-i18n-placeholder="form.phone.placeholder">
           </label>
           <label>
-            <span>Email</span>
+            <span data-i18n="form.email.label">Email</span>
             <input type="email" name="email" placeholder="you@example.com" required>
           </label>
           <label>
-            <span>Purpose</span>
+            <span data-i18n="form.purpose.label">Purpose</span>
             <select name="purpose" required style="font-family: var(--font-body); font-size:0.95rem; padding:12px 14px; border-radius: var(--radius-sm); border:1px solid var(--line); background: var(--paper);">
-              <option value="">Select purpose</option>
-              <option>Financial Planning Consultation</option>
-              <option>Join Stock Market Course</option>
-              <option>General Enquiry</option>
+              <option value="" data-i18n="form.purpose.opt0">Select purpose</option>
+              <option data-i18n="form.purpose.opt1">Financial Planning Consultation</option>
+              <option data-i18n="form.purpose.opt2">Join Stock Market Course</option>
+              <option data-i18n="form.purpose.opt3">General Enquiry</option>
             </select>
           </label>
           <label>
-            <span>Message</span>
-            <textarea name="message" rows="4" placeholder="Tell us how we can help"></textarea>
+            <span data-i18n="form.message.label">Message</span>
+            <textarea name="message" rows="4" placeholder="Tell us how we can help" data-i18n-placeholder="form.message.placeholder"></textarea>
           </label>
           <button type="submit" class="btn btn-primary ripple full-width">
-            <span>Book Consultation</span>
+            <span data-i18n="form.submit">Book Consultation</span>
           </button>
           <p class="form-note" id="formNote" role="status" aria-live="polite"></p>
         </form>
@@ -648,7 +663,7 @@
     <div class="footer-brand">
       <img src="lord-sai-logo.png" alt="Lord Sai Investment & Share Market Academy" style="width:130px;height:auto;">
     </div>
-    <p class="footer-tagline">Helping individuals build wealth through financial planning, smart investing &amp; practical stock market education.</p>
+    <p class="footer-tagline" data-i18n="footer.tagline">Helping individuals build wealth through financial planning, smart investing &amp; practical stock market education.</p>
     <div class="social-row" style="justify-content:center;">
       <a href="#" aria-label="Instagram" class="social-icon">ig</a>
       <a href="#" aria-label="Facebook" class="social-icon">fb</a>
@@ -656,10 +671,11 @@
       <a href="#" aria-label="YouTube" class="social-icon">yt</a>
       <a href="#" aria-label="Telegram" class="social-icon">tg</a>
     </div>
-    <p class="footer-copy">© <span id="year"></span> Lord Sai Investment &amp; Share Market Academy. All rights reserved. | Educational content only — investments are subject to market risk.</p>
+    <p class="footer-copy"><span data-i18n="footer.copy1">©</span> <span id="year"></span> <span data-i18n="footer.copy2">Lord Sai Investment &amp; Share Market Academy. All rights reserved. | Educational content only — investments are subject to market risk.</span></p>
   </div>
 </footer>
 
+<script src="translations.js"></script>
 <script src="script.js"></script>
 </body>
 </html>

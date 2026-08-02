@@ -990,3 +990,64 @@ img, svg{ display:block; max-width: 100%; }
   .process-row{ grid-template-columns: repeat(2, 1fr); }
   .cta-banner{ padding: 30px 22px; }
 }
+
+/* ==========================================================================
+   LANGUAGE SWITCHER
+   ========================================================================== */
+.lang-switch-bar{
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 5;
+  padding: 14px 0;
+}
+.lang-switch-inner{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:12px;
+  padding: 10px 24px;
+  flex-wrap: wrap;
+}
+.lang-switch-group{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 4px;
+}
+.lang-btn{
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 16px;
+  cursor: pointer;
+  transition: background .2s var(--ease), color .2s var(--ease), transform .15s var(--ease);
+}
+.lang-btn:hover{ background: rgba(201,162,39,0.12); }
+.lang-btn.active{
+  background: var(--navy);
+  color: var(--gold-bright);
+}
+.lang-btn:active{ transform: scale(0.96); }
+
+/* Devanagari script (Hindi / Marathi) needs its own font stack for correct rendering */
+body.lang-devanagari,
+body.lang-devanagari h1,
+body.lang-devanagari h2,
+body.lang-devanagari h3,
+body.lang-devanagari h4{
+  font-family: 'Noto Sans Devanagari', var(--font-body), sans-serif;
+}
+
+@media (max-width: 560px){
+  .lang-switch-inner{ padding: 8px 16px; gap:8px; }
+  .lang-btn{ padding: 6px 12px; font-size: 0.8rem; }
+}
